@@ -61,8 +61,16 @@ public class MainActivity extends AppCompatActivity {
         .productGroup("Öl")
         .type("Öl")
         .volume(330).build();
+    Product p3 = new Product.Builder()
+            .alcohol(4.8)
+            .name("Blysjön IPA")
+            .nr(1235)
+            .productGroup("Öl")
+            .type("Öl")
+            .volume(330).build();
     products.add(p1);
     products.add(p2);
+    products.add(p3);
   }
 
 
