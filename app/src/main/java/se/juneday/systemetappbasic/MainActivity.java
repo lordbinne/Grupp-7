@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
   private static final String NAME = "name";
 
 
-  /* private void createFakedProducts() {
+   private void createFakedProducts() {
     products = new ArrayList<>();
     Product p1 = new Product.Builder()
         .alcohol(4.4)
@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
     products.add(p2);
     products.add(p3);
   }
-  */
+
 
 
   private void setupListView() {
