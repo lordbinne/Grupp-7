@@ -1,18 +1,22 @@
 package se.juneday.systemetappbasic;
 
 import android.annotation.SuppressLint;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
+import android.content.Intent;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
  * status bar and navigation/system bar) with user interaction.
  */
 public class Activity1_StartScreen extends AppCompatActivity {
+
+    private Button button;
     /**
      * Whether or not the system UI should be auto-hidden after
      * {@link #AUTO_HIDE_DELAY_MILLIS} milliseconds.
@@ -89,7 +93,18 @@ public class Activity1_StartScreen extends AppCompatActivity {
 
         setContentView(R.layout.activity_activity1__start_screen);
 
-        mVisible = true;
+        button = (Button) findViewById(R.id.AlertButton);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openMainActivity();
+
+            }
+        });
+    
+
+
+    mVisible = true;
         mControlsView = findViewById(R.id.fullscreen_content_controls);
         mContentView = findViewById(R.id.fullscreen_content);
 
@@ -107,6 +122,11 @@ public class Activity1_StartScreen extends AppCompatActivity {
         // while interacting with the UI.
 //   TA BORT DETTA????     findViewById(R.id.dummy_button).setOnTouchListener(mDelayHideTouchListener);
     }
+
+            public void openMainActivity() {
+                Intent intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+            }
 
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
@@ -161,3 +181,4 @@ public class Activity1_StartScreen extends AppCompatActivity {
         mHideHandler.postDelayed(mHideRunnable, delayMillis);
     }
 }
+
