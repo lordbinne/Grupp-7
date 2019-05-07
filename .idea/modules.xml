@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/SystemetAppBasic.iml" filepath="$PROJECT_DIR$/SystemetAppBasic.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Grupp-7.iml" filepath="$PROJECT_DIR$/Grupp-7.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
 </project>
