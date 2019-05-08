@@ -101,10 +101,19 @@ public class Activity1_StartScreen extends AppCompatActivity {
 
             }
         });
-    
+
+        button = (Button) findViewById(R.id.AlertButton1);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openAccessDenied();
+
+            }
+        });
 
 
-    mVisible = true;
+
+        mVisible = true;
         mControlsView = findViewById(R.id.fullscreen_content_controls);
         mContentView = findViewById(R.id.fullscreen_content);
 
@@ -127,6 +136,11 @@ public class Activity1_StartScreen extends AppCompatActivity {
                 Intent intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
             }
+
+            public void openAccessDenied() {
+        Intent intent = new Intent(this, Activity2_AccessDenied.class);
+        startActivity(intent);
+    }
 
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
