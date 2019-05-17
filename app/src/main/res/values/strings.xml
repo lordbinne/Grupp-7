@@ -1,10 +1,10 @@
 <resources>
 
-  <string name="app_name">Systemvetarbolaget</string>
+    <string name="app_name">Systemvetarbolaget</string>
     <string name="grupp7">String</string>
-  <string name="Ja">Jag är 20år eller äldre</string>
-  <string name="Nej">Jag är yngre än 20år</string>
-  <string name="errormessage">Du har inte tillåtelse att se sidan.</string>
-  <string name="OK">OK</string>
+    <string name="Ja">Jag är 20år eller äldre</string>
+    <string name="Nej">Jag är yngre än 20år</string>
+    <string name="errormessage">Du har inte tillåtelse att se sidan.</string>
+    <string name="OK">OK</string>
 
 </resources>
