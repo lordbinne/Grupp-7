@@ -4,6 +4,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import se.juneday.systemetappbasic.domain.Product;
 
@@ -17,7 +20,8 @@ public class ProductActivity extends AppCompatActivity {
       super.onCreate(savedInstanceState);
       setContentView(R.layout.product_activity);
 
-      // extract the Product pass in the bundle
+
+        // extract the Product pass in the bundle
       Bundle extras = getIntent().getExtras();
       Product p = (Product) extras.get("product");
       // display the product

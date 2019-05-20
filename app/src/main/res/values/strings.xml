@@ -6,5 +6,6 @@
     <string name="Nej">Jag är yngre än 20år</string>
     <string name="errormessage">Du har inte tillåtelse att se sidan.</string>
     <string name="OK">OK</string>
+    <string name="togglebutton">ToggleButton</string>
 
 </resources>
