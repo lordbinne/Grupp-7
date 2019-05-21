@@ -2,9 +2,9 @@ package se.juneday.systemetappbasic;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -15,19 +15,23 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
+
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+
 import se.juneday.systemetappbasic.domain.Product;
 
 public class MainActivity extends AppCompatActivity {
@@ -45,22 +49,22 @@ public class MainActivity extends AppCompatActivity {
   private static final String NAME = "name";
 
 
-   private void createFakedProducts() {
+  private void createFakedProducts() {
     products = new ArrayList<>();
     Product p1 = new Product.Builder()
-        .alcohol(4.4)
-        .name("Pilsner Urquell")
-        .nr(1234)
-        .productGroup("Öl")
-        .type("Öl")
-        .volume(330).build();
+            .alcohol(4.4)
+            .name("Pilsner Urquell")
+            .nr(1234)
+            .productGroup("Öl")
+            .type("Öl")
+            .volume(330).build();
     Product p2 = new Product.Builder()
-        .alcohol(4.4)
-        .name("Baron Trenk")
-        .nr(1234)
-        .productGroup("Öl")
-        .type("Öl")
-        .volume(330).build();
+            .alcohol(4.4)
+            .name("Baron Trenk")
+            .nr(1234)
+            .productGroup("Öl")
+            .type("Öl")
+            .volume(330).build();
     Product p3 = new Product.Builder()
             .alcohol(4.8)
             .name("Blysjön IPA")
@@ -74,22 +78,21 @@ public class MainActivity extends AppCompatActivity {
   }
 
 
-
   private void setupListView() {
     // look up a reference to the ListView object
     listView = findViewById(R.id.product_list);
 
     // create an adapter (with the faked products)
     adapter = new ArrayAdapter<Product>(this,
-        android.R.layout.simple_list_item_1,
-        products);
+            android.R.layout.simple_list_item_1,
+            products);
 
     listView.setOnItemClickListener(new ListView.OnItemClickListener() {
       @Override
       public void onItemClick(AdapterView<?> parent,
-          final View view,
-          int position /*The position of the view in the adapter.*/,
-          long id /* The row id of the item that was clicked */) {
+                              final View view,
+                              int position /*The position of the view in the adapter.*/,
+                              long id /* The row id of the item that was clicked */) {
         Log.d(LOG_TAG, "item clicked, pos:" + position + " id: " + id);
 
         Product p = products.get(position);
@@ -121,6 +124,11 @@ public class MainActivity extends AppCompatActivity {
         Log.d(LOG_TAG, "user presssed SEARCH");
         showSearchDialog();
         break;
+      case R.id.my_fav:
+        Log.d(LOG_TAG, "user pressed My favorites");
+        Intent intent = new Intent(this, Activity3_Favoritelist.class);
+        this.startActivity(intent);
+        break;
       default:
         Log.d(LOG_TAG, "uh oh ;)");
         break;
@@ -136,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
 
   // if the value is valid, add it to the map
   private void addToMap(Map<String, String> map, String key, String value) {
-    if (value!=null && !value.equals("")) {
+    if (value != null && !value.equals("")) {
       map.put(key, value);
     }
   }
@@ -145,7 +153,7 @@ public class MainActivity extends AppCompatActivity {
     AlertDialog.Builder builder = new AlertDialog.Builder(this);
     builder.setTitle("Search products");
     final View viewInflated = LayoutInflater
-        .from(this).inflate(R.layout.search_dialog, null);
+            .from(this).inflate(R.layout.search_dialog, null);
 
     builder.setView(viewInflated);
 
@@ -183,14 +191,13 @@ public class MainActivity extends AppCompatActivity {
     String argumentString = "";
 
     // iterate over the map and build up a string to pass over the network
-    for (Map.Entry<String, String> entry : arguments.entrySet())
-    {
+    for (Map.Entry<String, String> entry : arguments.entrySet()) {
       // If first arg use "?", otherwise use "&"
       // E g:    ?min_alcohol=4.4&max_alcohol=5.4
-      argumentString += (argumentString.equals("")?"?":"&")
-          + entry.getKey()
-          + "="
-          + entry.getValue();
+      argumentString += (argumentString.equals("") ? "?" : "&")
+              + entry.getKey()
+              + "="
+              + entry.getValue();
     }
     // print argument
     Log.d(LOG_TAG, " arguments: " + argumentString);
@@ -199,19 +206,19 @@ public class MainActivity extends AppCompatActivity {
     String url = "http://rameau.sandklef.com:9090/search/products/all/" + argumentString;
     Log.d(LOG_TAG, "Searching using url: " + url);
     JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
-        Request.Method.GET,
-        url,
-        null,
-        new Response.Listener<JSONArray>() {
+            Request.Method.GET,
+            url,
+            null,
+            new Response.Listener<JSONArray>() {
 
-          @Override
-          public void onResponse(JSONArray array) {
-            Log.d(LOG_TAG, "onResponse()");
-            products.clear();
-            products.addAll(jsonToProducts(array));
-            adapter.notifyDataSetChanged();
-          }
-        }, new Response.ErrorListener() {
+              @Override
+              public void onResponse(JSONArray array) {
+                Log.d(LOG_TAG, "onResponse()");
+                products.clear();
+                products.addAll(jsonToProducts(array));
+                adapter.notifyDataSetChanged();
+              }
+            }, new Response.ErrorListener() {
 
       @Override
       public void onErrorResponse(VolleyError error) {
@@ -236,7 +243,7 @@ public class MainActivity extends AppCompatActivity {
         int volume = row.getInt("volume");
 
         Product m = new Product(name, alcohol, price, volume);
-        productList .add(m);
+        productList.add(m);
         Log.d(LOG_TAG, " * " + m);
       } catch (JSONException e) {
         ; // is ok since this is debug
@@ -256,5 +263,11 @@ public class MainActivity extends AppCompatActivity {
 
     // setup listview (and friends)
     setupListView();
+
+  }
+
+  public void yourMethodName(View v) {
+    startActivity(new Intent(MainActivity.this, Activity3_Favoritelist.class));
   }
 }
+

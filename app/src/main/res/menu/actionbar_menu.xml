@@ -6,9 +6,9 @@
     android:id="@+id/action_search"
     android:title="Search">
   </item>
+
   <item
       android:id="@+id/my_fav"
       android:icon="@drawable/ic_favorite_black_24dp"
       android:title="My Favorites" />
-
 </menu>

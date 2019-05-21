@@ -35,17 +35,18 @@
         android:layout_marginBottom="511dp"
         android:textSize="24sp" />
 
-  <ToggleButton
-      android:id="@+id/toggleButton"
-      android:layout_width="228dp"
-      android:layout_height="95dp"
-      android:layout_alignParentEnd="true"
-      android:layout_alignParentBottom="true"
-      android:layout_marginEnd="86dp"
-      android:layout_marginBottom="123dp"
-      android:text="@string/togglebutton"
-      android:textOff="Lägg till i favoriter
+    <ToggleButton
+        android:id="@+id/toggleButton"
+        android:layout_width="228dp"
+        android:layout_height="95dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="86dp"
+        android:layout_marginBottom="123dp"
+        android:onClick="addToFavorite"
+        android:text="@string/togglebutton"
+        android:textOff="Lägg till i favoriter
 "
-      android:textOn="Ta bort från favoriter" />
+        android:textOn="Ta bort från favoriter" />
 
 </RelativeLayout>

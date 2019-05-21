@@ -1,19 +1,23 @@
 package se.juneday.systemetappbasic;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import se.juneday.systemetappbasic.domain.Product;
 
 
 public class ProductActivity extends AppCompatActivity {
 
     private static final String LOG_TAG = ProductActivity.class.getSimpleName();
+    List<String> favoriteList = new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +43,11 @@ public class ProductActivity extends AppCompatActivity {
       setViewText(R.id.product_volume, "Volume", String.valueOf(product.volume()));
       setViewText(R.id.product_alcohol, "Alcohol", String.valueOf(product.alcohol()));
       setViewText(R.id.product_price, "Price", String.valueOf(product.price()));
+    }
+
+    public void addToFavorite(View view) {
+
+        favoriteList.add(String.valueOf(1));
     }
 
   }
