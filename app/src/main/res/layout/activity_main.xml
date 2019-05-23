@@ -13,6 +13,11 @@
     android:id="@+id/product_list">
   </ListView>
 
+  <ImageView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      app:srcCompat="@drawable/bakgrund"
+      android:id="@+id/imageView7" />
 
 
 </android.support.constraint.ConstraintLayout>
