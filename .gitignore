@@ -3,7 +3,8 @@
 
 # Log file
 *.log
-
+.gradle/*
+.idea/*
 # BlueJ files
 *.ctxt
 local.properties
@@ -11,6 +12,7 @@ local.properties
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
+*.iml
 # Package Files #
 *.jar
 *.war
